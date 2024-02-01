@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config 
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-344x(%h=-ki($ymeo2=vgbjbca$1-b7u2*v$nk1*s5z3e29c@s'
+SECRET_KEY = config('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -72,8 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ez_dev.wsgi.application'
 
-#Load env variables from .env file
-config = config()
 
 #Adzuna API keys
 ADZUNA_APP_ID = config('ADZUNA_APP_ID')
