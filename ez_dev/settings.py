@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'azuna_api',
     'users',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
