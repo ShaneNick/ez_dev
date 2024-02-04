@@ -29,7 +29,7 @@ class JobListingSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_salary_range(self, obj):
-        """Constructs a string representation of the salary range."""
+        """string representation of the salary range."""
         if obj.salary_min and obj.salary_max:
             return f"${obj.salary_min} - ${obj.salary_max}"
         elif obj.salary_min:
