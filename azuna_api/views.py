@@ -33,19 +33,23 @@ def apiOverview(request):
     
 @api_view(['GET'])
 def fetch_us_jobs(request):
-    # Fetch job listings for the US, limiting the results to 10
-    country_code = 'us'  # ISO country code for the United States
-    results_per_page = 10  # Limit to 10 jobs
+    # Define search parameters correctly in a dictionary
+    search_params = {
+        'results_per_page': 10,  # Limit to 10 jobs
+        'where': "New York City",  # Specify the location as New York City
+        'what_or': "Junior JR jr",  # Keywords that may be found
+        'title_only': "software developer",  # Keywords found only in the title
+    }
 
-    response_json = fetch_adzuna_jobs(country_code, 1, results_per_page=results_per_page)  # Page 1
-    
+    # Fetch job listings for the US with specified parameters
+    response_json = fetch_adzuna_jobs('us', 1, **search_params)
+
     if response_json:
-        # Directly parse and return the job listings without storing them
         job_listings = parse_adzuna_response(response_json)
-        #return Response({'jobs': job_listings})
     else:
         job_listings = []
 
+    # Render the listings in the template
     return render(request, 'azuna_api/listings.html', {'jobs': job_listings})
     
 

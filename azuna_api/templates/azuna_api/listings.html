@@ -14,7 +14,7 @@
                 <p>Location: {{ job.location }}</p>
                 <p>Salary Min: ${{ job.salary_min|floatformat:"2" }}</p>
                 <p>Created At: {{ job.created_at }}</p>
-                <a href="{{ job.redirect_url }}">More Details</a>
+                <a href="{{ job.redirect_url }}" target = "_blank">More Details</a>
             </li>
         {% empty %}
             <li>No job listings found.</li>
