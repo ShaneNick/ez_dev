@@ -13,4 +13,5 @@ urlpatterns = [
     path('', apiOverview, name="api-overview"),
     path('fetch-us-jobs/', fetch_us_jobs, name='fetch_us_jobs'),
     path('', include(router.urls)),
+    path('listings/', fetch_us_jobs, name = 'listings')
 ]

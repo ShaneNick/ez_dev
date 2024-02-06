@@ -36,14 +36,17 @@ def fetch_us_jobs(request):
     # Fetch job listings for the US, limiting the results to 10
     country_code = 'us'  # ISO country code for the United States
     results_per_page = 10  # Limit to 10 jobs
+
     response_json = fetch_adzuna_jobs(country_code, 1, results_per_page=results_per_page)  # Page 1
     
     if response_json:
         # Directly parse and return the job listings without storing them
         job_listings = parse_adzuna_response(response_json)
-        return Response({'jobs': job_listings})
+        #return Response({'jobs': job_listings})
     else:
-        return Response({'error': 'Failed to fetch data from Adzuna.'}, status=400)
+        job_listings = []
+
+    return render(request, 'azuna_api/listings.html', {'jobs': job_listings})
     
 
 class JobListingViewSet(viewsets.ModelViewSet):
