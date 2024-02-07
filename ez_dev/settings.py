@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'azuna_api',
     'users',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
